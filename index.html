@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>محمد سام ملک‌زاده</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Tahoma,Vazirmatn,Arial,sans-serif;background:#f4f6f8;color:#222;padding:12px;max-width:520px;margin:0 auto}
+.header{background:#2c3e50;color:#fff;text-align:center;border-radius:10px;padding:16px 10px;margin-bottom:18px}
+.header h1{font-size:22px;font-weight:800}
+.header p{font-size:14px;opacity:.8;margin-top:4px}
+h2.sec{font-size:19px;font-weight:800;text-align:right;margin:18px 4px 10px}
+.card{background:#fff;border:1px solid #ddd;border-radius:10px;padding:10px;margin-bottom:8px}
+.file-row{display:flex;justify-content:flex-end;align-items:center;border-bottom:1px solid #eee;padding:10px 6px;font-size:14px}
+.file-wrap{position:relative;overflow:hidden}
+.file-wrap input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer}
+.file-label{cursor:pointer}
+.file-name{font-size:13px;color:#333;padding:8px 6px 2px;text-align:right}
+.upload-preview{border:1px solid #ddd;border-radius:0 0 8px 8px;margin-top:0;min-height:140px;display:flex;align-items:center;justify-content:center;padding:20px}
+.upload-preview img{width:110px;height:110px;object-fit:cover;border-radius:10px;border:1px solid #cbd5e1;background:#e9f2ff}
+.ph{width:110px;height:110px;border-radius:10px;background:#dceafa;display:flex;align-items:center;justify-content:center;font-size:48px;border:1px solid #b9d0ea}
+.stage{background:#efefef;border:2px dashed #c9c9c9;border-radius:10px;min-height:220px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;cursor:crosshair;padding:20px}
+.stage img{max-width:280px;width:60%;border-radius:8px;pointer-events:none;user-select:none}
+.hotspot{position:absolute;transform:translate(-50%,-50%);background:#3498db;color:#fff;border:none;border-radius:20px;padding:10px 22px;font-family:inherit;font-size:15px;cursor:pointer;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.hotspot.selected{outline:3px solid #f1c40f}
+.settings{background:#f7f3ef;border-radius:10px;padding:12px;border:1px solid #e5ddd3}
+.settings h3{text-align:right;font-size:18px;margin-bottom:10px}
+.row{display:flex;gap:8px;align-items:center;margin-bottom:8px;background:#fff;border:1px solid #ddd;border-radius:8px;padding:8px 10px}
+.row label{font-size:13px;white-space:nowrap;font-weight:700}
+.row input[type=text],.row input[type=url],.row select{flex:1;border:none;outline:none;font-family:inherit;font-size:13px;background:transparent;text-align:right;min-width:0}
+.row input[type=color]{width:28px;height:24px;border:1px solid #ccc;border-radius:4px;padding:0;background:#fff}
+.hint{background:#fff;border:1px solid #ddd;color:#999;font-size:12px;border-radius:6px;padding:4px 10px;white-space:nowrap}
+.btns{display:flex;gap:8px;margin-top:6px}
+.btn{flex:1;border:none;border-radius:8px;padding:11px;font-family:inherit;font-size:15px;font-weight:700;color:#fff;cursor:pointer}
+.blue{background:#3498db}.red{background:#e74c3c}.dark{background:#2c3e50}
+.mini-code{background:#3498db;color:#fff;font-family:monospace;font-size:12px;border-radius:8px;padding:10px 14px;width:200px;margin:14px auto;direction:ltr;text-align:left;line-height:1.6}
+.gen{width:100%;background:#3498db;color:#fff;border:none;border-radius:8px;padding:12px;font-size:16px;font-family:inherit;font-weight:700;cursor:pointer;margin-bottom:8px}
+textarea#out{width:100%;min-height:190px;border:1px solid #bbb;border-radius:8px;padding:10px;font-family:monospace;font-size:13px;direction:ltr;text-align:left;resize:vertical;background:#fff}
+.outline-btn{width:100%;background:#fff;border:1px solid #bbb;border-radius:8px;padding:11px;margin-top:8px;font-family:inherit;font-size:15px;cursor:pointer}
+.dl-row{display:flex;gap:8px;margin-top:8px}
+</style>
+</head>
+<body>
+<header class="header"><h1>محمد سام ملک‌زاده</h1><p>مدیریت محمد سام ملک‌زاده</p></header>
+<h2 class="sec">۱. عکس را آپلود کنید</h2>
+<div class="card" style="padding:0">
+<div class="file-row"><div class="file-wrap"><span class="file-label" id="fileLabel">File: my_image.jpg</span><input type="file" id="file" accept="image/*"></div></div>
+<div class="file-name" id="fileName">File: my_image.jpg</div>
+<div class="upload-preview"><span id="phSmall" class="ph">🏞️</span><img id="thumb" alt="" style="display:none"></div>
+</div>
+<h2 class="sec">۲. روی عکس کلیک کنید تا دکمه بسازید</h2>
+<div class="stage" id="stage"><img id="stageImg" alt="" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='180'><rect width='200' height='180' rx='10' fill='%23d7e9f7'/><circle cx='150' cy='40' r='15' fill='%23f7c948'/><ellipse cx='70' cy='55' rx='30' ry='14' fill='white'/><path d='M10 110 L60 60 L100 105 L130 75 L190 115 L190 170 L10 170 Z' fill='%237aa3c4'/><path d='M40 110 L60 60 L85 95 Z' fill='%232f5f8a'/><rect y='130' width='200' height='50' fill='%2358c472'/></svg>"></div>
+<div class="settings" style="margin-top:12px">
+<h3>تنظیمات دکمه انتخاب شده</h3>
+<div class="row"><label>متن دکمه:</label><input type="text" id="tText" value="مشاهده بیشتر"></div>
+<div class="row"><label>رنگ پس‌زمینه:</label><input type="text" id="tBgT" value="#3498db" style="text-align:left;direction:ltr"><input type="color" id="tBg" value="#3498db"></div>
+<div class="row"><label>رنگ متن:</label><span class="hint">مدیر بلادی پارس: پیانداشم</span><input type="text" id="tFgT" value="#ffffff" style="text-align:left;direction:ltr;flex:.6"><input type="color" id="tFg" value="#ffffff"></div>
+<div class="row"><label>رفتار:</label><select id="tAct"><option value="blank" selected>باز کردن لینک در تب جدید</option><option value="self">باز کردن لینک در همان تب</option><option value="alert">نمایش پیام</option></select></div>
+<div class="row"><label>مقدار (پیام یا لینک):</label><span class="hint">btn-1</span><input type="url" id="tLink" value="https://example.com/more-info" style="text-align:left;direction:ltr"></div>
+<div class="btns"><button class="btn red" id="del">حذف دکمه</button><button class="btn blue" id="save">ذخیره دکمه</button></div>
+</div>
+<div class="mini-code">.custom-button {<br>Background-color: #3498db;<br>color: #ffffff;<br>border-radius: 5px;<br>}</div>
+<h2 class="sec">۳. کد نهایی را دریافت کنید</h2>
+<button class="gen" id="gen">تولید کد</button>
+<textarea id="out" spellcheck="false">.custom-button {
+    background-color: #3498db;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 10px 20px;
+    direction: LTR
+}
+<button class="custom-button">مشاهده بیشتر</button></textarea>
+<button class="outline-btn" id="copy">کپی کد</button>
+<div class="dl-row"><button class="outline-btn" id="dl1" style="margin:0">دانلود فایل</button><button class="btn dark" id="dl2" style="flex:1;border-radius:8px">دانلود فایل</button></div>
+<script>
+let btns=[],sel=0,imgData='';
+const stage=document.getElementById('stage'),stageImg=document.getElementById('stageImg');
+btns.push({x:50,y:50,text:'مشاهده بیشتر',bg:'#3498db',fg:'#ffffff',act:'blank',link:'https://example.com/more-info',id:'btn-1'});
+function render(){stage.querySelectorAll('.hotspot').forEach(e=>e.remove());btns.forEach((b,i)=>{let el=document.createElement('button');el.className='hotspot'+(i===sel?' selected':'');el.textContent=b.text;el.style.left=b.x+'%';el.style.top=b.y+'%';el.style.background=b.bg;el.style.color=b.fg;el.onclick=e=>{e.stopPropagation();select(i)};stage.appendChild(el)});if(btns[sel]){tText.value=btns[sel].text;tBg.value=btns[sel].bg;tBgT.value=btns[sel].bg;tFg.value=btns[sel].fg;tFgT.value=btns[sel].fg;tAct.value=btns[sel].act;tLink.value=btns[sel].link}}
+function select(i){sel=i;render()}
+const tText=document.getElementById('tText'),tBg=document.getElementById('tBg'),tBgT=document.getElementById('tBgT'),tFg=document.getElementById('tFg'),tFgT=document.getElementById('tFgT'),tAct=document.getElementById('tAct'),tLink=document.getElementById('tLink');
+stage.addEventListener('click',e=>{if(e.target!==stage&&e.target!==stageImg)return;let r=stage.getBoundingClientRect();let x=((e.clientX-r.left)/r.width*100).toFixed(1),y=((e.clientY-r.top)/r.height*100).toFixed(1);btns.push({x:parseFloat(x),y:parseFloat(y),text:'مشاهده بیشتر',bg:'#3498db',fg:'#ffffff',act:'blank',link:'https://example.com/more-info',id:'btn-'+(btns.length+1)});sel=btns.length-1;render()});
+tBg.oninput=()=>tBgT.value=tBg.value;tBgT.oninput=()=>{tBg.value=tBgT.value};tFg.oninput=()=>tFgT.value=tFg.value;tFgT.oninput=()=>{tFg.value=tFgT.value};
+document.getElementById('save').onclick=()=>{if(!btns[sel])return;Object.assign(btns[sel],{text:tText.value||'دکمه',bg:tBgT.value,fg:tFgT.value,act:tAct.value,link:tLink.value});render()};
+document.getElementById('del').onclick=()=>{btns.splice(sel,1);sel=0;render()};
+document.getElementById('file').onchange=e=>{let f=e.target.files[0];if(!f)return;document.getElementById('fileLabel').textContent='File: '+f.name;document.getElementById('fileName').textContent='File: '+f.name;let rd=new FileReader();rd.onload=()=>{imgData=rd.result;stageImg.src=imgData;let th=document.getElementById('thumb');th.src=imgData;th.style.display='block';document.getElementById('phSmall').style.display='none'};rd.readAsDataURL(f)};
+function genCode(){let css=btns.map((b,i)=>`.custom-button-${i+1} {\n    background-color: ${b.bg};\n    color: ${b.fg};\n    border-radius: 5px;\n    padding: 10px 20px;\n    direction: LTR\n}`).join('\n')||`.custom-button {\n    background-color: #3498db;\n    color: #ffffff;\n    border-radius: 5px;\n    padding: 10px 20px;\n    direction: LTR\n}`;let html=`<div style="position:relative;display:inline-block;">\n  <img src="${imgData||'my_image.jpg'}" style="max-width:100%;display:block;">\n`+btns.map((b,i)=>{let act=b.act==='alert'?` onclick="alert('${b.link}')"`:b.act==='self'?` onclick="location.href='${b.link}'"`:` onclick="window.open('${b.link}','_blank')"`;return `  <button class="custom-button-${i+1}" style="position:absolute;left:${b.x}%;top:${b.y}%;transform:translate(-50%,-50%);"${act}>${b.text}</button>`}).join('\n')+`\n</div>`;document.getElementById('out').value=`<style>\n${css}\n}\n</style>\n${html}`;return document.getElementById('out').value}
+document.getElementById('gen').onclick=genCode;
+document.getElementById('copy').onclick=async()=>{genCode();try{await navigator.clipboard.writeText(document.getElementById('out').value);document.getElementById('copy').textContent='کپی شد ✓'}catch(e){document.getElementById('out').select();document.execCommand('copy')}};
+function dl(){genCode();let blob=new Blob([document.getElementById('out').value],{type:'text/html'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='buttons.html';a.click()}
+document.getElementById('dl1').onclick=dl;document.getElementById('dl2').onclick=dl;
+render();
+</script>
+</body>
+</html>
